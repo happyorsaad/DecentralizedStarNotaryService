@@ -16,7 +16,7 @@ const App = {
         starNotaryArtifact.abi,
         deployedNetwork.address
       );
-      
+
       // get accounts
       const accounts = await web3.eth.getAccounts();
       this.account = accounts[0];
@@ -42,7 +42,7 @@ const App = {
   lookUp: async function () {
     const { tokenIdToStarInfo } = this.meta.methods;
     const id = document.getElementById("lookid").value;
-    const name = await tokenIdToStarInfo(id).send({ from: this.account });
+    const name = await tokenIdToStarInfo(id).call({ from: this.account });
     App.setStatus("Star Name For A Given Token Is " + name + ".");
   },
 };
